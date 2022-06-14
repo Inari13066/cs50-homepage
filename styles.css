@@ -1,0 +1,377 @@
+:root {
+  --navbar: #5F798A;
+  --bg: #FFFAFF;
+  --shadow: #5C5D67;
+  --text: #2D2D34;
+  --button: #C6878F;
+  --buttonHover: #B15964;
+  --buttonShadow: rgba(198, 135, 143, 0.5);
+  --buttonHoverShadow: rgba(177, 89, 100, 0.5);
+  --ag: #A9D8DB;
+  --agShadow: rgba(169, 216, 219, 0.5);
+  --au: #EEE395;
+  --auShadow: rgba(238, 227, 149, 0.5);
+  --zn: #C6E59F;
+  --znShadow: rgba(198, 229, 159, 0.5);
+  --cu: #F5CA8E;
+  --cuShadow: rgba(245, 202, 142, 0.5);
+  --error: #CE272A;
+}
+
+body {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+}
+
+.btn-primary{
+    background-color: var(--button);
+    border-color: var(--button);
+    box-shadow: none;
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus{
+    box-shadow: 0 0 0 0.25rem var(--buttonHoverShadow) !important;
+}
+
+.btn-primary:hover, .btn-primary:focus .btn-primary:active, .btn-primary.active{
+    background-color: var(--buttonHover) !important;
+    border-color: var(--buttonHover) !important;
+
+}
+
+.navbar-toggler-icon {
+    height: 6vh;
+    width: 6vh;
+}
+
+.navbar-brand {
+    font-size: 4vh;
+}
+
+.navbarDana{
+    background-color: var(--navbar) !important;
+    font-size: 3vh;
+}
+
+.carousel-item
+{
+    height: 90vh;
+    background-color: var(--shadow);
+}
+
+.btn-primary
+{
+    margin: 5vh;
+    padding: 2vh;
+    font-size: 3vh;
+}
+
+.memes_buttons_container, .formNextContainer {
+    text-align: center;
+    width: 100vw;
+    padding: 1vh;
+    margin: 0vh;
+}
+
+h2
+{
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-size: 6vh;
+}
+
+.h2 {
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 1vh;
+    font-size: 6vh;
+}
+
+h3
+{
+    text-align: center;
+    margin-bottom: 5vh;
+    font-size: 4vh;
+}
+
+p {
+    font-size: 3vh;
+}
+
+.hidden {
+    display: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.showMemeImg {
+    position: relative;
+    margin: auto;
+    max-width: 100vw;
+    max-height: 55vh;
+    display: block;
+}
+
+.showRetryButton {
+    position: relative;
+    display: block;
+    margin: auto;
+}
+
+.showMeme {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+#textHome {
+    text-align: center;
+    width: 40vw;
+    max-height: 60vh;
+    padding-left: 12px;
+
+}
+
+.imgHome {
+
+}
+
+.imgCats {
+    height: 100vh;
+}
+
+.buttonHome {
+    margin-top: 0px;
+    margin-bottom: 5vh;
+}
+
+.homepageContainer {
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.nextCheckbox {
+    width: 100%;
+    margin-bottom: 5vh;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+#submitNext {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10vw;
+    width: 20vw;
+    height: 8vh;
+    padding: 1vh;
+}
+
+label {
+    font-size: 3vh;
+}
+
+.col-form-label {
+    font-size: 3vh;
+}
+
+input {
+    height: 8vh;
+}
+
+.form-check-input {
+    height: 3vh;
+    width: 3vh;
+    margin-right: 1vh;
+}
+
+.inputInitialValues, .inputNewValues {
+    font-size: 3vh;
+    margin-top: 1vh;
+}
+
+input[type="checkbox"]#auCheckbox:checked {
+    background-color: var(--au) !important;
+    border-color: var(--au) !important;
+}
+
+input[type="checkbox"]#auCheckbox:focus {
+    box-shadow: 0 0 0 0.25rem var(--auShadow) !important;
+    border-color: var(--au) !important;
+}
+
+input[type="number"]#add2 {
+    background-color: var(--auShadow) !important;
+    border-color: var(--au) !important;
+}
+
+input[type="number"]#inputInitial2:enabled, input[type="number"]#inputNew2:enabled {
+    background-color: var(--auShadow) !important;
+    border-color: var(--au) !important;
+}
+
+input[type="number"]#inputInitial2:focus, input[type="number"]#inputNew2:focus {
+    box-shadow: 0 0 0 0.25rem var(--au) !important;
+}
+
+
+input[type="number"]#inputMass {
+    border-color: var(--button) !important;
+}
+
+input[type="number"]#inputMass:focus {
+    box-shadow: 0 0 0 0.25rem var(--buttonShadow) !important;
+}
+
+
+input[type="checkbox"]#agCheckbox:checked {
+    background-color: var(--ag) !important;
+    border-color: var(--ag) !important;
+}
+
+input[type="checkbox"]#agCheckbox:focus {
+    box-shadow: 0 0 0 0.25rem var(--agShadow) !important;
+    border-color: var(--ag) !important;
+}
+
+input[type="number"]#add1 {
+    background-color: var(--agShadow) !important;
+    border-color: var(--ag) !important;
+}
+
+input[type="number"]#inputInitial1:enabled, input[type="number"]#inputNew1:enabled {
+    background-color: var(--agShadow) !important;
+    border-color: var(--ag) !important;
+}
+
+input[type="number"]#inputInitial1:focus, input[type="number"]#inputNew1:focus {
+    box-shadow: 0 0 0 0.25rem var(--ag) !important;
+}
+
+
+
+
+input[type="checkbox"]#znCheckbox:checked {
+    background-color: var(--zn) !important;
+    border-color: var(--zn) !important;
+}
+
+input[type="checkbox"]#znCheckbox:focus {
+    box-shadow: 0 0 0 0.25rem var(--znShadow) !important;
+    border-color: var(--zn) !important;
+}
+
+input[type="number"]#add4 {
+    background-color: var(--znShadow) !important;
+    border-color: var(--zn) !important;
+}
+
+input[type="number"]#inputInitial4:enabled, input[type="number"]#inputNew4:enabled {
+    background-color: var(--znShadow) !important;
+    border-color: var(--zn) !important;
+}
+
+input[type="number"]#inputInitial4:focus, input[type="number"]#inputNew4:focus {
+    box-shadow: 0 0 0 0.25rem var(--zn) !important;
+}
+
+
+
+
+input[type="checkbox"]#cuCheckbox:checked {
+    background-color: var(--cu) !important;
+    border-color: var(--cu) !important;
+}
+
+input[type="checkbox"]#cuCheckbox:focus {
+    box-shadow: 0 0 0 0.25rem var(--cuShadow) !important;
+    border-color: var(--cu) !important;
+}
+
+input[type="number"]#add3 {
+    background-color: var(--cuShadow) !important;
+    border-color: var(--cu) !important;
+}
+
+input[type="number"]#inputInitial3:enabled, input[type="number"]#inputNew3:enabled {
+    background-color: var(--cuShadow) !important;
+    border-color: var(--cu) !important;
+}
+
+input[type="number"]#inputInitial3:focus, input[type="number"]#inputNew3:focus {
+    box-shadow: 0 0 0 0.25rem var(--cu) !important;
+}
+
+.mistake_next {
+    text-align: center;
+    color: var(--error);
+}
+
+.nextTitle {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+#nextTitleButton {
+    margin-top: 0vh;
+    margin-left: 1vh;
+    margin-bottom: 2vh;
+    margin-right: 0px;
+    padding: 1vh;
+    font-size: 3vh;
+
+    align-items: center;
+    justify-content: center;
+    width: 4vh;
+    height: 4vh;
+    display: inline-flex;
+
+    background-color: var(--bg);
+    border-color: var(--button);
+    color: var(--button);
+}
+
+#nextTitleButton:hover {
+    color: var(--bg);
+}
+
+.modal-body {
+    text-align: left;
+    font-size: 3.5vh;
+    padding: 4vh;
+    padding-top: 1vh;
+}
+
+h5 {
+    font-size: 3.5vh;
+    text-align: left;
+}
+
+.modal-dialog {
+    max-width: 80vw;
+}
+
+.btn-close {
+    font-size: 3.5vh;
+
+}
+
+.modal-header {
+    margin: 2vh;
+}

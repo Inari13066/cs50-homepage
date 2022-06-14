@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <link href="styles.css" rel="stylesheet">
+        <title>Dana's Webpage</title>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+              checkbox.onclick = function() {
+                if (checkbox.checked) {
+                  if (checkbox.id == "agCheckbox") {
+                    document.querySelector('#inputInitial1').disabled = false;
+                    document.querySelector('#inputNew1').disabled = false;
+                  } else if (checkbox.id == "auCheckbox") {
+                    document.querySelector('#inputInitial2').disabled = false;
+                    document.querySelector('#inputNew2').disabled = false;
+                  } else if (checkbox.id == "cuCheckbox") {
+                    document.querySelector('#inputInitial3').disabled = false;
+                    document.querySelector('#inputNew3').disabled = false;
+                  } else if (checkbox.id == "znCheckbox") {
+                    document.querySelector('#inputInitial4').disabled = false;
+                    document.querySelector('#inputNew4').disabled = false;
+                  }
+                } else {
+                  if (checkbox.id == "agCheckbox"){
+                    document.querySelector('#inputInitial1').disabled = true;
+                    document.querySelector('#inputNew1').disabled = true;
+                    document.querySelector('#inputInitial1').value = "";
+                    document.querySelector('#inputNew1').value = "";
+                  } else if (checkbox.id == "auCheckbox") {
+                    document.querySelector('#inputInitial2').disabled = true;
+                    document.querySelector('#inputNew2').disabled = true;
+                    document.querySelector('#inputInitial2').value = "";
+                    document.querySelector('#inputNew2').value = "";
+                  } else if (checkbox.id == "cuCheckbox") {
+                    document.querySelector('#inputInitial3').disabled = true;
+                    document.querySelector('#inputNew3').disabled = true;
+                    document.querySelector('#inputInitial3').value = "";
+                    document.querySelector('#inputNew3').value = "";
+                  } else if (checkbox.id == "znCheckbox") {
+                    document.querySelector('#inputInitial4').disabled = true;
+                    document.querySelector('#inputNew4').disabled = true;
+                    document.querySelector('#inputInitial4').value = "";
+                    document.querySelector('#inputNew4').value = "";
+                  }
+
+                }
+              }
+            });
+
+            document.querySelectorAll("input[type=number]").forEach(function(input)
+            {
+              input.addEventListener("keyup", function(event)
+              {
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                  // Trigger the button element with a click
+                  document.querySelector("#submitNext").click();
+                }
+              });
+            });
+
+            document.querySelector('#submitNext').onclick = function() {
+              let initialValues = 0;
+              document.querySelectorAll('.inputInitialValues').forEach(function(initialV) {
+                initialValues = initialValues*1 + +initialV.value;
+              });
+              let newValues = 0;
+              let newValuesZero = 1;
+              document.querySelectorAll('.inputNewValues').forEach(function(newV) {
+                newValues = newValues*1 + newV.value*1;
+                console.log(newV.value, newV.value === 0);
+                if (newV.value === "0") {
+                  newValuesZero = 0;
+                  console.log(newValuesZero);
+                };
+              });
+
+              let isEmpty = 0;
+              document.querySelectorAll('.inputNewValues', '.inputInitialValues').forEach(function(V) {
+                if (V.value === "" && V.disabled === false) {
+                  isEmpty = 1;
+                }
+              });
+              let mass = document.querySelector('#inputMass').value*1;
+              let checkboxCount = 0;
+              let agCheckboxChecked = 1;
+              let auCheckboxChecked = 1;
+              document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+                if (checkbox.checked) {
+                  checkboxCount = checkboxCount + 1;
+                  if (checkbox.id == "agCheckbox") {
+                    agCheckboxChecked = 0;
+                  };
+                  if (checkbox.id == "auCheckbox") {
+                    auCheckboxChecked = 0;
+                  };
+                }
+              });
+
+              let allIsFine = 1;
+
+              // console.log(checkboxCount < 2 && (auCheckboxChecked === 1 || auCheckboxChecked === 1), auCheckboxChecked === 1 || auCheckboxChecked === 1);
+              if (initialValues != 1000) {
+                document.querySelector('#test').innerHTML = "Sum of shares of the initial alloy in not equal to 1000!";
+              } else if (newValues != 1000) {
+                document.querySelector('#test').innerHTML = "Sum of shares of the new alloy in not equal to 1000!";
+              } else if (isEmpty == 1) {
+                document.querySelector('#test').innerHTML = "Empty input!";
+              } else if (mass === 0 || (mass - Math.floor(mass)) !== 0) {
+                document.querySelector('#test').innerHTML = "Invalid mass!";
+              } else if (checkboxCount < 2) {
+                document.querySelector('#test').innerHTML = "At least 2 compartments should be checked";
+
+                //Add mistake about new alloy cannot be 0 - done
+
+                //Upgrade mistake about 2 compartments: at least one of them should be Au or Ag - done
+
+              } else if (newValuesZero === 0) {
+                document.querySelector('#test').innerHTML = "New alloy cannot be 0!";
+              } else {
+                document.querySelector('#test').innerHTML = "";
+                allIsFine = 0;
+              };
+
+              let agIn, agNew, auIn, auNew, cuIn, cuNew, znIn, znNew, indexAg, indexAu, indexCu, indexZn, addAg, addAu, addCu, addZn;
+              agIn = agNew = auIn = auNew = cuIn = cuNew = znIn = znNew = 0;
+              indexAg = indexAu = indexCu = indexZn = 0;
+              addAg = addAu = addCu = addZn = 0;
+              if (document.querySelector('#agCheckbox').checked) {
+                agIn = document.querySelector('#inputInitial1').value*1;
+                agNew = document.querySelector('#inputNew1').value*1;
+                indexAg = agNew - agIn;
+              };
+              if (document.querySelector('#auCheckbox').checked) {
+                auIn = document.querySelector('#inputInitial2').value * 1;
+                auNew = document.querySelector('#inputNew2').value*1;
+                indexAu = auNew - auIn;
+              };
+              if (document.querySelector('#cuCheckbox').checked) {
+                cuIn = document.querySelector('#inputInitial3').value*1;
+                cuNew = document.querySelector('#inputNew3').value*1;
+                indexCu = cuNew - cuIn;
+              };
+              if (document.querySelector('#znCheckbox').checked) {
+                znIn = document.querySelector('#inputInitial4').value*1;
+                znNew = document.querySelector('#inputNew4').value*1;
+                indexZn = znNew - znIn;
+              };
+
+
+              if (allIsFine === 0) { //Change to === 0 after tests
+                let indexNext = Math.min(indexAg, indexAu, indexCu, indexZn) * (-1);
+                // console.log(indexAg, indexAu, indexCu, indexZn, indexNext);
+                if (indexAg * (-1) === indexNext) {
+                  indexNext = indexNext/agNew;
+                } else if (indexAu * (-1) === indexNext) {
+                  indexNext = indexNext/auNew;
+                } else if (indexCu * (-1) === indexNext) {
+                  indexNext = indexNext/cuNew;
+                } else if (indexZn * (-1) === indexNext) {
+                  indexNext = indexNext/znNew;
+                };
+                if (agNew !== 0) {
+                  addAg = mass * (indexAg + (indexNext * agNew))/1000;
+                };
+                if (auNew !== 0) {
+                  addAu = mass * (indexAu + (indexNext * auNew))/1000;
+                };
+                if (cuNew !== 0) {
+                  addCu = mass * (indexCu + (indexNext * cuNew))/1000;
+                };
+                if (znNew !== 0) {
+                  addZn = mass * (indexZn + (indexNext * znNew))/1000;
+                };
+
+                // console.log(indexNext * agNew, indexAg + (indexNext * agNew));
+                // console.log(addAg, addAu, addCu, addZn);
+
+                // if (agIn !== undefined && auIn === undefined) {
+
+                //   let addSmth = 0;
+                //   if (agIn > agNew) { //Need to add cu/zn
+                //     addSmth = mass*(agIn - agNew)/agNew;
+                //     addAg = 0;
+                //   } else if (agIn < agNew){ //Need to add ag
+                //     addAg = mass*(agIn - agNew)/(agNew - 1000);
+                //     addCu = 0;
+                //     addZn = 0;
+                //   } else {
+                //     addAg = 0;
+                //   };
+
+                //   let addSmthEqual = (znIn/znNew)/(cuIn/cuNew);
+                //   console.log(addSmthEqual);
+
+                //   if (cuIn !== undefined && znIn === undefined) {
+                //     addCu = addSmth;
+                //     addZn = 0;
+                //   } else if (znIn !== undefined && cuIn === undefined) {
+                //     addZn = addSmth;
+                //     addZn = 0;
+                //   } else if (cuIn !== undefined && znIn !== undefined && addSmthEqual === 1) {
+                //     addCu = addSmth/((znIn/cuIn) + 1);
+                //     addZn = addSmth - addCu;
+                //   } else if (cuIn !== undefined && znIn !== undefined && addSmthEqual !== 1) {
+                //     let cuIndex
+                //   };
+
+                //   //check if addSmth is cu, zn or cu+zn - done
+                //   //calculate addCu and addZn - done
+
+                // } else if (auIn !== undefined) {
+
+                //   let addSmth = 0;
+                //   if (auIn > auNew) { //Need to add cu/zn/ag
+                //     addSmth = mass*(auIn - auNew)/auNew;
+                //     addAu = 0;
+                //   } else if (auIn < auNew){ //Need to add au
+                //     addAu = mass*(auIn - auNew)/(auNew - 1000);
+                //     addCu = 0;
+                //     addZn = 0;
+                //     addAg = 0;
+                //   } else {
+                //     addAu = 0;
+                //   };
+
+                //   if (agIn === undefined) {
+                //     agNew = 0;
+                //   };
+                //   if (cuIn === undefined) {
+                //     cuNew = 0;
+                //   };
+                //   if (znIn === undefined) {
+                //     znNew = 0;
+                //   };
+
+                //   let allNew = agNew + cuNew + znNew;
+                //   addAg = agNew*addSmth/allNew;
+                //   addCu = cuNew*addSmth/allNew;
+                //   addZn = znNew*addSmth/allNew;
+
+                //   //all about addAu - done
+                //   //(check if addSmth is ag, cu, zn or mim) if cu/zn/ag is undef (cu/zn/ag)New = 0- done
+                //   //calculate addAg, addCu and addZn - done
+                // };
+
+                if (addAg === 0 || addAg === undefined) {
+                  document.querySelector('#add1').placeholder = "";
+                } else {
+                  document.querySelector('#add1').placeholder = addAg.toFixed(2);
+                };
+                if (addAu === 0 || addAu === undefined) {
+                  document.querySelector('#add2').placeholder = "";
+                } else {
+                  document.querySelector('#add2').placeholder = addAu.toFixed(2);
+                };
+                if (addCu === 0 || addCu === undefined) {
+                  document.querySelector('#add3').placeholder = "";
+                } else {
+                  document.querySelector('#add3').placeholder = addCu.toFixed(2);
+                };
+                if (addZn === 0 || addZn === undefined) {
+                  document.querySelector('#add4').placeholder = "";
+                } else {
+                  document.querySelector('#add4').placeholder = addZn.toFixed(2);
+                };
+
+
+                //Add addAg, addCu, addZn - done
+
+                //All adds should be in x.xx  - done
+
+                //If add is 0 don't show it - done
+
+
+
+              };
+
+              document.querySelector('#submitNext').blur();
+            };
+          });
+        </script>
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-dark navbarDana">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/index.html">Dana</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/cats.html">Cats</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/memes.html">Memes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/next.html">What's next?</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="nextTitle">
+        <label for="nextTitleButton" id= "nextTitleText" class="h2">Part of my final project</label>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="nextTitleButton" data-bs-target="#staticBackdrop">
+          ?
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">How to use the calculator</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Instructions: </br>
+                <ul>
+                  <li>Select checkboxes of materials you will be using.<br>
+                    You should select at least 2 materials.</li>
+                  <li>In initial alloy fields enter parts of materials in your source material.</br>
+                    (e.g. for pure silver enter 1000 Ag and 0 Cu)</li>
+                  <li>In new alloy fields enter parts of materials you want to achieve.</br>
+                    (e.g. for 925 silver enter 925 Ag and 75 Cu)</br>
+                    Any part of new alloy parts can't be 0.</li>
+                  <li>The sum of parts of materials should be equal to 1000.</br>
+                    All of the checked inputs should be filled.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row justify-content-center nextCheckbox">
+        <div class="col-sm-auto">
+          <div class="form-check">
+            <label for="agCheckbox" class="form-check-label">Ag</label>
+            <input type="checkbox" class="form-check-input" id="agCheckbox" value="">
+
+          </div>
+        </div>
+        <div class="col-sm-auto">
+          <div class="form-check">
+            <label for="auCheckbox" class="form-check-label">Au</label>
+            <input type="checkbox" class="form-check-input" id="auCheckbox" value="">
+          </div>
+        </div>
+        <div class="col-sm-auto">
+          <div class="form-check">
+            <label for="znCheckbox" class="form-check-label">Cu</label>
+            <input type="checkbox" class="form-check-input" id="cuCheckbox" value="">
+          </div>
+        </div>
+        <div class="col-sm-auto">
+          <div class="form-check">
+            <label for="cuCheckbox" class="form-check-label">Zn</label>
+            <input type="checkbox" class="form-check-input" id="znCheckbox" value="">
+          </div>
+        </div>
+      </div>
+
+      <form>
+        <div class="row mb-3 formNextContainer">
+        <label for="inputInitialValues" class="col-sm-4 col-form-label">Initial alloy</label>
+          <div class="col-sm-auto">
+            <input type="number" class="form-control inputInitialValues" max="1000" min="0" id="inputInitial1" disabled>
+          </div>
+          <div class="col-sm-auto">
+            <input type="number" class="form-control inputInitialValues" max="1000" min="0" id="inputInitial2" disabled>
+          </div>
+          <div class="col-sm-auto">
+            <input type="number" class="form-control inputInitialValues" max="1000" min="0" id="inputInitial3" disabled>
+          </div>
+          <div class="col-sm-auto">
+            <input type="number" class="form-control inputInitialValues" max="1000" min="0" id="inputInitial4" disabled>
+          </div>
+
+        </div>
+
+        <div class="row mb-3 formNextContainer">
+        <label for="inputNewValues" class="col-sm-4 col-form-label">New alloy</label>
+          <div class="col-sm-auto">
+            <input type="number" class="form-control inputNewValues" max="1000" min="0" id="inputNew1" disabled>
+          </div>
+          <div class="col-sm-auto">
+            <input type="number" class="form-control inputNewValues" max="1000" min="0" id="inputNew2" disabled>
+          </div>
+          <div class="col-sm-auto">
+            <input type="number" class="form-control inputNewValues" max="1000" min="0" id="inputNew3" disabled>
+          </div>
+          <div class="col-sm-auto">
+            <input type="number" class="form-control inputNewValues" max="1000" min="0" id="inputNew4" disabled>
+          </div>
+
+        </div>
+
+        <div class="row mb-3 formNextContainer">
+        <label for="inputMass" class="col-sm-4 col-form-label">Initial mass (g)</label>
+          <div class="col-sm-auto">
+            <input type="number" class="form-control" min="0" id="inputMass">
+          </div>
+          <div class="col-sm-auto">
+            <button id=submitNext type="button" class="btn btn-primary">Enter</button>
+          </div>
+        </div>
+
+        <hr>
+        <p id = "test" class="mistake_next"></p>
+
+        <div class="row mb-3 formNextContainer">
+        <label class="col-sm-4 col-form-label">Additive (g)</label>
+          <div class="col-sm-auto">
+            <fieldset disabled>
+            <input type="number" class="form-control inputInitialValues" max="1000" min="0" id="add1">
+            </fieldset>
+          </div>
+          <div class="col-sm-auto">
+            <fieldset disabled>
+            <input type="number" class="form-control inputInitialValues" max="1000" min="0" id="add2">
+            </fieldset>
+          </div>
+          <div class="col-sm-auto">
+            <fieldset disabled>
+            <input type="number" class="form-control inputInitialValues" max="1000" min="0" id="add3">
+            </fieldset>
+          </div>
+          <div class="col-sm-auto">
+            <fieldset disabled>
+            <input type="number" class="form-control inputInitialValues" max="1000" min="0" id="add4">
+            </fieldset>
+          </div>
+        </div>
+
+      </form>
+
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    </body>
+</html>
