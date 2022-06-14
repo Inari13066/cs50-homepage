@@ -181,74 +181,6 @@
                 // console.log(indexNext * agNew, indexAg + (indexNext * agNew));
                 // console.log(addAg, addAu, addCu, addZn);
 
-                // if (agIn !== undefined && auIn === undefined) {
-
-                //   let addSmth = 0;
-                //   if (agIn > agNew) { //Need to add cu/zn
-                //     addSmth = mass*(agIn - agNew)/agNew;
-                //     addAg = 0;
-                //   } else if (agIn < agNew){ //Need to add ag
-                //     addAg = mass*(agIn - agNew)/(agNew - 1000);
-                //     addCu = 0;
-                //     addZn = 0;
-                //   } else {
-                //     addAg = 0;
-                //   };
-
-                //   let addSmthEqual = (znIn/znNew)/(cuIn/cuNew);
-                //   console.log(addSmthEqual);
-
-                //   if (cuIn !== undefined && znIn === undefined) {
-                //     addCu = addSmth;
-                //     addZn = 0;
-                //   } else if (znIn !== undefined && cuIn === undefined) {
-                //     addZn = addSmth;
-                //     addZn = 0;
-                //   } else if (cuIn !== undefined && znIn !== undefined && addSmthEqual === 1) {
-                //     addCu = addSmth/((znIn/cuIn) + 1);
-                //     addZn = addSmth - addCu;
-                //   } else if (cuIn !== undefined && znIn !== undefined && addSmthEqual !== 1) {
-                //     let cuIndex
-                //   };
-
-                //   //check if addSmth is cu, zn or cu+zn - done
-                //   //calculate addCu and addZn - done
-
-                // } else if (auIn !== undefined) {
-
-                //   let addSmth = 0;
-                //   if (auIn > auNew) { //Need to add cu/zn/ag
-                //     addSmth = mass*(auIn - auNew)/auNew;
-                //     addAu = 0;
-                //   } else if (auIn < auNew){ //Need to add au
-                //     addAu = mass*(auIn - auNew)/(auNew - 1000);
-                //     addCu = 0;
-                //     addZn = 0;
-                //     addAg = 0;
-                //   } else {
-                //     addAu = 0;
-                //   };
-
-                //   if (agIn === undefined) {
-                //     agNew = 0;
-                //   };
-                //   if (cuIn === undefined) {
-                //     cuNew = 0;
-                //   };
-                //   if (znIn === undefined) {
-                //     znNew = 0;
-                //   };
-
-                //   let allNew = agNew + cuNew + znNew;
-                //   addAg = agNew*addSmth/allNew;
-                //   addCu = cuNew*addSmth/allNew;
-                //   addZn = znNew*addSmth/allNew;
-
-                //   //all about addAu - done
-                //   //(check if addSmth is ag, cu, zn or mim) if cu/zn/ag is undef (cu/zn/ag)New = 0- done
-                //   //calculate addAg, addCu and addZn - done
-                // };
-
                 if (addAg === 0 || addAg === undefined) {
                   document.querySelector('#add1').placeholder = "";
                 } else {
@@ -278,7 +210,6 @@
                 //If add is 0 don't show it - done
 
 
-
               };
 
               document.querySelector('#submitNext').blur();
@@ -289,23 +220,23 @@
     <body>
       <nav class="navbar navbar-expand-lg navbar-dark navbarDana">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/index.html">Dana</a>
+          <a class="navbar-brand" href="index.html">Dana</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="/index.html">Home</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/cats.html">Cats</a>
+                <a class="nav-link" href="cats.html">Cats</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/memes.html">Memes</a>
+                <a class="nav-link" href="memes.html">Memes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/next.html">What's next?</a>
+                <a class="nav-link active" aria-current="page" href="next.html">What's next?</a>
               </li>
             </ul>
           </div>
